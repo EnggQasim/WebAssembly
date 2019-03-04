@@ -1,0 +1,6 @@
+create cheker.wat
+(module
+ (memory $mem 1)
+)
+
+$ wasm-objdump checkers.wasm -x
