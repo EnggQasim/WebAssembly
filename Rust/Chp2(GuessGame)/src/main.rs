@@ -21,6 +21,9 @@ fn main() {
             Ok(num) => num,
             Err(_) => continue,
         };
+    
+}
+
         
         println!("Your Guess: {}", guess);
 
