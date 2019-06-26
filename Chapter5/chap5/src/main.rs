@@ -1,84 +1,55 @@
-// fn main() {
-//     // struct User {
-//     // username: String,
-//     // email: String,
-//     // sign_in_count: u64,
-//     // active: bool,
-//     // }
-
-
-//     // let user1 = User {
-//     // email: String::from("someone@example.com"),
-//     // username: String::from("someusername123"),
-//     // active: true,
-//     // sign_in_count: 1,
-//     // };
-
-//     // println!("{}",user1.email);
-
-
-//     //=========Listing 5.3
-//     // fn build_user(email: String, username: String) -> User
-//     // {
-//     //     User {
-//     //     email: email,
-//     //     username: username,
-//     //     active: true,
-//     //     sign_in_count: 1,
-//     //     }
-//     // }
-
-
-//     //=============Listing 5.4
-
-//     // fn build_user(email: String, username: String) -> User
-//     // {
-//     //     User {
-//     //         email,
-//     //         username,
-//     //         active: true,
-//     //         sign_in_count: 1,
-//     //     }
-//     // }
-
-// //==================Listing 5-5:
-// // let user2 = User {
-// // email: String::from("another@example.com"),
-// // username: String::from("anotherusername567"),
-// // active: user1.active,
-// // sign_in_count: user1.sign_in_count,
-// // };
-
-// //===================Listing 5-6:
-
-//     struct User {
-//     username: String,
-//     email: String,
-//     sign_in_count: u64,
-//     active: bool,
-//     }
-//     let user1 = User {
-//     email: String::from("someone@example.com"),
-//     username: String::from("someusername123"),
-//     active: true,
-//     sign_in_count: 1,
-//     };
-
-//     let user2 = User {
-//     email: String::from("another@example.com"),
-//     username: String::from("anotherusername567"),
-//     ..user1
-
-//     };
-
-// }
-//========================Listing 5-11
-#[derive(Debug)]
-struct Rectangle {
-length: u32,
-width: u32,
+#![allow(unused_variables)]
+pub trait Summary {
+    fn summarize(&self) -> String;
 }
+
+
 fn main() {
-let rect1 = Rectangle { length: 50, width: 30 };
-println!("rect1 is {:#?}", rect1);
+pub trait Summary {
+    fn summarize(&self) -> String;
+}
+
+
+
+pub struct NewsArticle {
+    pub headline: String,
+    pub location: String,
+    pub author: String,
+    pub content: String,
+}
+
+impl Summary for NewsArticle {
+    fn summarize(&self) -> String {
+        format!("{}, by {} ({})", self.headline, self.author, self.location)
+    }
+}
+
+pub struct Tweet {
+    pub username: String,
+    pub content: String,
+    pub reply: bool,
+    pub retweet: bool,
+}
+
+impl Summary for Tweet {
+    fn summarize(&self) -> String {
+        format!("{}: {}", self.username, self.content)
+    }
+}
+
+
+
+
+
+let tweet = Tweet {
+    username: String::from("horse_ebooks"),
+    content: String::from("of course, as you probably already know, people"),
+    reply: false,
+    retweet: false,
+};
+
+println!("1 new tweet: {}", tweet.summarize());
+
+
+
 }
